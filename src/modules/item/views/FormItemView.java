@@ -20,6 +20,9 @@ public class FormItemView extends javax.swing.JDialog { // <-- Diubah dari JFram
     // Tambahkan ini agar layar tab "Design" NetBeans tidak error
     public FormItemView() {
         initComponents();
+        
+        cbKategori.setBackground(new java.awt.Color(249,237,213));
+        cbKategori.setForeground(new java.awt.Color(0,0,0));
     }
 
     // Constructor khusus untuk mode "TAMBAH DATA" (Milikmu yang sudah ada)
@@ -80,30 +83,39 @@ public class FormItemView extends javax.swing.JDialog { // <-- Diubah dari JFram
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 102));
+        jPanel1.setBackground(new java.awt.Color(115, 147, 126));
 
         lblJudul.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblJudul.setForeground(new java.awt.Color(248, 255, 252));
         lblJudul.setText("Form Barang");
 
         txtNama.addActionListener(this::txtNamaActionPerformed);
 
+        jLabel1.setForeground(new java.awt.Color(248, 255, 252));
         jLabel1.setText("Nama Barang:");
 
+        jLabel2.setForeground(new java.awt.Color(248, 255, 252));
         jLabel2.setText("Kategori:");
 
         txtHarga.addActionListener(this::txtHargaActionPerformed);
 
+        jLabel3.setForeground(new java.awt.Color(248, 255, 252));
         jLabel3.setText("Harga Sewa:");
 
         txtStok.addActionListener(this::txtStokActionPerformed);
 
+        jLabel4.setBackground(new java.awt.Color(248, 255, 252));
+        jLabel4.setForeground(new java.awt.Color(248, 255, 252));
         jLabel4.setText("Stok Barang:");
 
         cbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tent", "Lamp", "Carrier", " " }));
+        cbKategori.addActionListener(this::cbKategoriActionPerformed);
 
+        btnSimpan.setBackground(new java.awt.Color(206, 185, 146));
         btnSimpan.setText("Simpan");
         btnSimpan.addActionListener(this::btnSimpanActionPerformed);
 
+        btnBatal.setBackground(new java.awt.Color(206, 185, 146));
         btnBatal.setText("Batal");
         btnBatal.addActionListener(this::btnBatalActionPerformed);
 
@@ -111,10 +123,6 @@ public class FormItemView extends javax.swing.JDialog { // <-- Diubah dari JFram
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(lblJudul)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -142,13 +150,17 @@ public class FormItemView extends javax.swing.JDialog { // <-- Diubah dari JFram
                                     .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(31, 31, 31))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addComponent(lblJudul)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addComponent(lblJudul)
-                .addGap(48, 48, 48)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -243,6 +255,10 @@ public class FormItemView extends javax.swing.JDialog { // <-- Diubah dari JFram
         javax.swing.JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void cbKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKategoriActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbKategoriActionPerformed
 
     /**
      * @param args the command line arguments

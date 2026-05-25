@@ -4,6 +4,8 @@
  */
 package modules.item.views;
 
+import java.util.HashSet;
+import java.util.Set;
 import modules.item.services.ItemService;
 import modules.item.models.Item;         
 import javax.swing.table.DefaultTableModel; 
@@ -20,7 +22,11 @@ public class ItemView extends javax.swing.JFrame {
      */
     public ItemView() {
     initComponents();
-    loadDataToTable(); // Tambahkan baris ini
+    loadDataToTable();
+    
+    tblBarang.setSelectionBackground(new java.awt.Color(249,237,213));
+    tblBarang.setSelectionForeground(new java.awt.Color(0,0,0));
+        
     }
 
     /**
@@ -33,6 +39,7 @@ public class ItemView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBarang = new javax.swing.JTable();
@@ -52,9 +59,20 @@ public class ItemView extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(255, 153, 102));
+        jPanel2.setBackground(new java.awt.Color(115, 147, 126));
 
         tblBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,16 +87,20 @@ public class ItemView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblBarang);
 
+        btnTambah.setBackground(new java.awt.Color(206, 185, 146));
         btnTambah.setText("Tambah Barang");
         btnTambah.addActionListener(this::btnTambahActionPerformed);
 
+        btnEdit.setBackground(new java.awt.Color(206, 185, 146));
         btnEdit.setText("Edit Barang");
         btnEdit.addActionListener(this::btnEditActionPerformed);
 
+        btnHapus.setBackground(new java.awt.Color(206, 185, 146));
         btnHapus.setText("Hapus Barang");
         btnHapus.addActionListener(this::btnHapusActionPerformed);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(248, 255, 252));
         jLabel1.setText("Barang Barang Camping");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -97,10 +119,10 @@ public class ItemView extends javax.swing.JFrame {
                         .addComponent(btnHapus)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(209, 209, 209)
                 .addComponent(jLabel1)
-                .addGap(237, 237, 237))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,6 +278,7 @@ public class ItemView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblBarang;
     // End of variables declaration//GEN-END:variables
