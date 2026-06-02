@@ -6,10 +6,10 @@ package modules.rental.views;
 
 // Importan
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import config.DatabaseConfig;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -141,15 +141,11 @@ public class pnlTambahRental extends javax.swing.JPanel {
 
     // --- METHOD KONEKSI ---
     private Connection getKoneksi() {
-        try {
-            String url = "jdbc:mysql://localhost:3306/db_rental_camping"; 
-            String user = "root";
-            String pass = "";
-            return DriverManager.getConnection(url, user, pass);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Koneksi Database Gagal: " + e.getMessage());
-            return null;
+        Connection conn = DatabaseConfig.getConnection();
+        if (conn == null) {
+            JOptionPane.showMessageDialog(this, "Koneksi Database Gagal! Pastikan MySQL/XAMPP sudah berjalan.");
         }
+        return conn;
     }
 
     // --- METHOD LOAD CUSTOMER ---

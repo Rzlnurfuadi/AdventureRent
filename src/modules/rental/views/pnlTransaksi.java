@@ -15,6 +15,7 @@ public class pnlTransaksi extends javax.swing.JPanel {
      */
     public pnlTransaksi() {
         initComponents();
+        toRentalMouseClicked(null);
     }
 
     /**

@@ -5,6 +5,9 @@
 package mainMenu;
 
 import modules.rental.views.pnlListRental;
+import modules.rental.views.pnlTransaksi;
+import modules.rental.views.pnlPengembalian;
+import modules.item.views.pnlItem;
 import modules.customer.pnlCustomer;
 
 /**
@@ -21,6 +24,15 @@ public class mainMenu extends javax.swing.JFrame {
     public mainMenu() {
         initComponents();
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        setTitle("AdventureRent - Sistem Rental Camping");
+        showPanel(new pnlCustomer());
+    }
+
+    private void showPanel(javax.swing.JPanel panel) {
+        mainContainer.removeAll();
+        mainContainer.add(panel, java.awt.BorderLayout.CENTER);
+        mainContainer.revalidate();
+        mainContainer.repaint();
     }
 
     /**
@@ -84,6 +96,11 @@ public class mainMenu extends javax.swing.JFrame {
 
         toItem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         toItem.setText("Item");
+        toItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                toItemMouseClicked(evt);
+            }
+        });
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel37.setText("AB");
@@ -101,6 +118,11 @@ public class mainMenu extends javax.swing.JFrame {
 
         toPengembalian.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         toPengembalian.setText("Pengembalian");
+        toPengembalian.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                toPengembalianMouseClicked(evt);
+            }
+        });
 
         jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel41.setText("Services");
@@ -208,26 +230,20 @@ public class mainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void toCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toCustomerMouseClicked
-        mainContainer.removeAll(); // Bersihkan kontainer
-    
-        // Panggil nama class JPanel-mu (misal: PanelRental)
-        pnlCustomer pnlCust = new pnlCustomer(); 
-
-        mainContainer.add(pnlCust, java.awt.BorderLayout.CENTER); // Masukkan panel
-        mainContainer.revalidate(); // Render ulang
-        mainContainer.repaint();
+        showPanel(new pnlCustomer());
     }//GEN-LAST:event_toCustomerMouseClicked
 
-    private void toRentalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toRentalMouseClicked
-        mainContainer.removeAll();
-    
-      
-        pnlListRental pnlTr = new pnlListRental(); 
+    private void toItemMouseClicked(java.awt.event.MouseEvent evt) {
+        showPanel(new pnlItem());
+    }
 
-        mainContainer.add(pnlTr, java.awt.BorderLayout.CENTER);
-        mainContainer.revalidate();
-        mainContainer.repaint();
+    private void toRentalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toRentalMouseClicked
+        showPanel(new pnlTransaksi());
     }//GEN-LAST:event_toRentalMouseClicked
+
+    private void toPengembalianMouseClicked(java.awt.event.MouseEvent evt) {
+        showPanel(new pnlPengembalian());
+    }
 
     /**
      * @param args the command line arguments

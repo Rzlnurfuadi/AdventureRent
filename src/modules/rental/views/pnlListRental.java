@@ -5,9 +5,9 @@
 package modules.rental.views;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import config.DatabaseConfig;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -59,17 +59,12 @@ public class pnlListRental extends javax.swing.JPanel {
 }
     
     private Connection getKoneksi() {
-    try {
-        // Sesuaikan dengan nama database dan port XAMPP/MariaDB kamu
-        String url = "jdbc:mysql://localhost:3306/db_rental_camping"; 
-        String user = "root";
-        String pass = "";
-        return DriverManager.getConnection(url, user, pass);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Koneksi Database Gagal: " + e.getMessage());
-        return null;
+        Connection conn = DatabaseConfig.getConnection();
+        if (conn == null) {
+            JOptionPane.showMessageDialog(this, "Koneksi Database Gagal! Pastikan MySQL/XAMPP sudah berjalan.");
+        }
+        return conn;
     }
-}
     
     private void tampilDataRental() {
     // 1. Definisikan header kolom tabel

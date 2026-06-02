@@ -59,6 +59,16 @@ public class pnlCustomer extends javax.swing.JPanel {
     }
     
     private void showAllCustomers() {
+        if (conn == null) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Koneksi database gagal!\n\n"
+                + "1. Pastikan XAMPP/MySQL sudah nyala\n"
+                + "2. Database 'db_rental_camping' sudah dibuat\n"
+                + "3. File lib/mysql-connector-j-9.6.0.jar ada di project",
+                "Koneksi Gagal", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         try {
             String sql = "SELECT * FROM customers ORDER BY id_customer ASC";
             Statement st = conn.createStatement();
@@ -81,6 +91,7 @@ public class pnlCustomer extends javax.swing.JPanel {
             }
 
             customerList.setModel(model);
+            styleTable(customerList);
 
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Gagal memuat data: " + e.getMessage());
@@ -249,6 +260,10 @@ public class pnlCustomer extends javax.swing.JPanel {
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
         // TODO add your handling code here:
         String keyword = searchBarInput.getText().trim();
+        if (conn == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Koneksi database gagal!");
+            return;
+        }
 
         DefaultTableModel data = new DefaultTableModel(
             new String[]{"ID", "Nama Lengkap", "No HP", "Alamat"}, 0

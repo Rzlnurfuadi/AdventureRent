@@ -15,20 +15,19 @@ public class DatabaseConfig {
 
     public static Connection getConnection() {
         try {
-            // Cek jika koneksi belum dibuat atau sudah tertutup
             if (connection == null || connection.isClosed()) {
-                // Memastikan driver MySQL dimuat (opsional untuk JDBC modern, tapi aman buat tugas kuliah)
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
                 System.out.println("Koneksi ke Database Berhasil!");
             }
         } catch (ClassNotFoundException e) {
-            System.err.println("Driver MySQL tidak ditemukan! Periksa folder lib/ kalian.");
+            System.err.println("Driver MySQL tidak ditemukan! Pastikan file lib/mysql-connector-j-9.6.0.jar ada di project.");
             e.printStackTrace();
+            connection = null;
         } catch (SQLException e) {
-            System.err.println("Gagal koneksi ke database! Pastikan MySQL/XAMPP sudah menyala.");
+            System.err.println("Gagal koneksi ke database! Pastikan MySQL/XAMPP sudah menyala dan database db_rental_camping sudah dibuat.");
             e.printStackTrace();
+            connection = null;
         }
         return connection;
     }

@@ -1,9 +1,8 @@
-import modules.rental.views.RentalView;
+import mainMenu.mainMenu;
 import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        // Set tampilan Nimbus agar lebih bagus
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -13,9 +12,6 @@ public class Main {
             }
         } catch (Exception e) { /* pakai default */ }
 
-        // Jalankan GUI di thread yang benar
-        SwingUtilities.invokeLater(() -> {
-            new RentalView().setVisible(true);
-        });
+        SwingUtilities.invokeLater(() -> new mainMenu().setVisible(true));
     }
 }

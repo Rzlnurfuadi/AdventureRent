@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Rizal Nurfuadi
  */
-public class ItemView extends javax.swing.JFrame {
+public class ItemView extends javax.swing.JFrame implements ItemTableRefreshable {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ItemView.class.getName());
 
@@ -279,6 +279,7 @@ public class ItemView extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new ItemView().setVisible(true));
     }
     
+    @Override
     public void loadDataToTable() {
         styleTable (tblBarang);
         DefaultTableModel model = (DefaultTableModel) tblBarang.getModel();

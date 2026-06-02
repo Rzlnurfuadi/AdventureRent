@@ -10,7 +10,7 @@ package modules.item.views;
  */
 public class FormItemView extends javax.swing.JDialog { // <-- Diubah dari JFrame menjadi JDialog
     
-    private ItemView itemViewInduk; // Untuk merefresh tabel di layar utama nanti
+    private ItemTableRefreshable itemViewInduk;
     private int idBarangDipilih = 0; 
     private boolean isEditMode = false;
     private int idBarangEdit;
@@ -30,34 +30,38 @@ public class FormItemView extends javax.swing.JDialog { // <-- Diubah dari JFram
      * Creates new form FormItemView
      * @param parent
      */
-   // Constructor khusus untuk mode "TAMBAH DATA"
-    public FormItemView(ItemView parent) {
-        super(parent, true); // Mengaktifkan status modal (mengunci layar utama)
-        this.itemViewInduk = parent;
+    public FormItemView(java.awt.Window owner, ItemTableRefreshable refreshable) {
+        super(owner, java.awt.Dialog.ModalityType.APPLICATION_MODAL);
+        this.itemViewInduk = refreshable;
         this.isEditMode = false;
         initComponents();
         lblJudul.setText("Tambah Barang Baru");
-        setLocationRelativeTo(parent); // Pop-up muncul tepat di tengah layar utama
+        setLocationRelativeTo(owner);
     }
 
-    // Constructor khusus untuk mode "EDIT DATA" (Menerima lemparan data lama)
-    public FormItemView(ItemView parent, int id, String nama, String kategori, int harga, int stok) {
-        super(parent, true);
+    public FormItemView(ItemView parent) {
+        this((java.awt.Window) parent, parent);
+    }
+
+    public FormItemView(java.awt.Window owner, ItemTableRefreshable refreshable,
+            int id, String nama, String kategori, int harga, int stok) {
+        super(owner, java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        
-        this.itemViewInduk = parent;
-        this.isEditMode = true; 
-        this.idBarangEdit = id; // Menyimpan ID agar tidak hilang
-        
-        // ---> TAMBAHKAN KODE INI UNTUK MEMUNCULKAN DATA LAMA KE LAYAR <---
+
+        this.itemViewInduk = refreshable;
+        this.isEditMode = true;
+        this.idBarangEdit = id;
+
         txtNama.setText(nama);
         cbKategori.setSelectedItem(kategori);
-        
-        // Karena harga dan stok berupa angka (int), kita harus mengubahnya 
-        // menjadi teks (String) terlebih dahulu menggunakan String.valueOf()
         txtHarga.setText(String.valueOf(harga));
         txtStok.setText(String.valueOf(stok));
+        setLocationRelativeTo(owner);
+    }
+
+    public FormItemView(ItemView parent, int id, String nama, String kategori, int harga, int stok) {
+        this((java.awt.Window) parent, parent, id, nama, kategori, harga, stok);
     }
     /**
      * This method is called from within the constructor to initialize the form.
