@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package modules.customer;
 
@@ -9,67 +9,52 @@ import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import config.DatabaseConfig;
+
 /**
  *
  * @author x395
  */
-
-
-public class Customer extends javax.swing.JFrame {
+public class pnlCustomer extends javax.swing.JPanel {
     private Connection conn;
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Customer.class.getName());
-
     /**
-     * Creates new form Customer
+     * Creates new form pnlCustomer
      */
-    
-    public Customer() {
+    public pnlCustomer() {
         initComponents();
         conn = DatabaseConfig.getConnection();
         showAllCustomers();
-        getContentPane().setBackground(new java.awt.Color(115, 147, 126));
-
-        // Warna baris tabel
-        customerList.setBackground(new java.awt.Color(240, 240, 240));
-        customerList.setForeground(java.awt.Color.BLACK);
-        styleTable(customerList);
-
-        
-        customerList.setSelectionBackground(new java.awt.Color(249,237,213));
-        customerList.setSelectionForeground(new java.awt.Color(0,0,0));
     }
     
-    
     private void styleTable(javax.swing.JTable table) {
-    // 1. Styling Baris dan Grid (Tampilan Clean/Flat)
-    table.setRowHeight(35); // Bikin baris lebih tinggi agar tidak sempit
-    table.setShowVerticalLines(false); // Hilangkan garis vertikal
-    table.setShowHorizontalLines(true); // Biarkan garis horizontal sebagai pemisah
-    table.setGridColor(new java.awt.Color(230, 230, 230)); // Warna garis horizontal abu-abu tipis
-    table.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-    
-    // 2. Warna saat baris diklik (Hijau Muda)
-    table.setSelectionBackground(new java.awt.Color(204, 255, 204)); 
-    table.setSelectionForeground(new java.awt.Color(0, 0, 0)); // Teks tetap hitam saat dipilih
+        // 1. Styling Baris dan Grid (Tampilan Clean/Flat)
+        table.setRowHeight(35); // Bikin baris lebih tinggi agar tidak sempit
+        table.setShowVerticalLines(false); // Hilangkan garis vertikal
+        table.setShowHorizontalLines(true); // Biarkan garis horizontal sebagai pemisah
+        table.setGridColor(new java.awt.Color(230, 230, 230)); // Warna garis horizontal abu-abu tipis
+        table.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 
-    // 3. Styling Header (Warna hijau gelap sesuai tema UI-mu)
-    javax.swing.table.JTableHeader header = table.getTableHeader();
-    header.setBackground(new java.awt.Color(21, 100, 60)); // Background hijau
-    header.setForeground(java.awt.Color.BLACK); // Teks putih
-    header.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 13)); // Font modern
-    
-    // Bikin header lebih tinggi sedikit
-    header.setPreferredSize(new java.awt.Dimension(header.getWidth(), 35));
-    
-    // Rata tengah untuk teks header
-    ((javax.swing.table.DefaultTableCellRenderer)header.getDefaultRenderer())
-            .setHorizontalAlignment(javax.swing.JLabel.CENTER);
-            
-    // Opsional: Membuat isi sel tabel rata tengah
-    javax.swing.table.DefaultTableCellRenderer centerRenderer = new javax.swing.table.DefaultTableCellRenderer();
-    centerRenderer.setHorizontalAlignment( javax.swing.JLabel.CENTER );
-    for(int x=0; x < table.getColumnCount(); x++){
-         table.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
+        // 2. Warna saat baris diklik (Hijau Muda)
+        table.setSelectionBackground(new java.awt.Color(204, 255, 204)); 
+        table.setSelectionForeground(new java.awt.Color(0, 0, 0)); // Teks tetap hitam saat dipilih
+
+        // 3. Styling Header (Warna hijau gelap sesuai tema UI-mu)
+        javax.swing.table.JTableHeader header = table.getTableHeader();
+        header.setBackground(new java.awt.Color(21, 100, 60)); // Background hijau
+        header.setForeground(java.awt.Color.BLACK); // Teks putih
+        header.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 13)); // Font modern
+
+        // Bikin header lebih tinggi sedikit
+        header.setPreferredSize(new java.awt.Dimension(header.getWidth(), 35));
+
+        // Rata tengah untuk teks header
+        ((javax.swing.table.DefaultTableCellRenderer)header.getDefaultRenderer())
+                .setHorizontalAlignment(javax.swing.JLabel.CENTER);
+
+        // Opsional: Membuat isi sel tabel rata tengah
+        javax.swing.table.DefaultTableCellRenderer centerRenderer = new javax.swing.table.DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( javax.swing.JLabel.CENTER );
+        for(int x=0; x < table.getColumnCount(); x++){
+             table.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
     }
     }
     
@@ -101,7 +86,6 @@ public class Customer extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Gagal memuat data: " + e.getMessage());
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,7 +95,6 @@ public class Customer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         searchLabel = new javax.swing.JLabel();
         customerTitle = new javax.swing.JLabel();
@@ -123,20 +106,6 @@ public class Customer extends javax.swing.JFrame {
         showCustomer = new javax.swing.JButton();
         editCustomer = new javax.swing.JButton();
         deleteCustomer = new javax.swing.JButton();
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 153, 102));
 
         jPanel2.setBackground(new java.awt.Color(115, 147, 126));
 
@@ -215,7 +184,7 @@ public class Customer extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 642, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -241,7 +210,7 @@ public class Customer extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+            .addGap(0, 456, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -265,8 +234,8 @@ public class Customer extends javax.swing.JFrame {
                     .addContainerGap()))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -275,30 +244,7 @@ public class Customer extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void addCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addCustomerMouseClicked
-        // TODO add your handling code here:
-        new AddDataCustomer().setVisible(true);
-    }//GEN-LAST:event_addCustomerMouseClicked
-
-    private void showCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showCustomerMouseClicked
-        // TODO add your handling code here:
-        showAllCustomers();
-    }//GEN-LAST:event_showCustomerMouseClicked
-
-    private void editCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editCustomerMouseClicked
-        // TODO add your handling code here:
-        new EditDataCustomer().setVisible(true);
-    }//GEN-LAST:event_editCustomerMouseClicked
-
-    private void deleteCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteCustomerMouseClicked
-        // TODO add your handling code here:
-        new DeleteDataCustomer().setVisible(true);
-    }//GEN-LAST:event_deleteCustomerMouseClicked
 
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
         // TODO add your handling code here:
@@ -320,10 +266,10 @@ public class Customer extends javax.swing.JFrame {
             boolean found = false;
             while (rs.next()) {
                 data.addRow(new Object[]{
-                    rs.getInt("id_customer"),    
-                    rs.getString("nama_lengkap"), 
-                    rs.getString("no_hp"),        
-                    rs.getString("alamat")        
+                    rs.getInt("id_customer"),
+                    rs.getString("nama_lengkap"),
+                    rs.getString("no_hp"),
+                    rs.getString("alamat")
                 });
                 found = true;
             }
@@ -336,34 +282,30 @@ public class Customer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchButtonMouseClicked
 
+    private void addCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addCustomerMouseClicked
+        // TODO add your handling code here:
+        new AddDataCustomer().setVisible(true);
+    }//GEN-LAST:event_addCustomerMouseClicked
+
     private void addCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addCustomerActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void showCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showCustomerMouseClicked
+        // TODO add your handling code here:
+        showAllCustomers();
+    }//GEN-LAST:event_showCustomerMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Customer().setVisible(true));
-    }
+    private void editCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editCustomerMouseClicked
+        // TODO add your handling code here:
+        new EditDataCustomer().setVisible(true);
+    }//GEN-LAST:event_editCustomerMouseClicked
+
+    private void deleteCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteCustomerMouseClicked
+        // TODO add your handling code here:
+        new DeleteDataCustomer().setVisible(true);
+    }//GEN-LAST:event_deleteCustomerMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCustomer;
@@ -371,7 +313,6 @@ public class Customer extends javax.swing.JFrame {
     private javax.swing.JLabel customerTitle;
     private javax.swing.JButton deleteCustomer;
     private javax.swing.JButton editCustomer;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField searchBarInput;
