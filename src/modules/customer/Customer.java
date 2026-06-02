@@ -32,10 +32,45 @@ public class Customer extends javax.swing.JFrame {
         // Warna baris tabel
         customerList.setBackground(new java.awt.Color(240, 240, 240));
         customerList.setForeground(java.awt.Color.BLACK);
+        styleTable(customerList);
 
         
         customerList.setSelectionBackground(new java.awt.Color(249,237,213));
         customerList.setSelectionForeground(new java.awt.Color(0,0,0));
+    }
+    
+    
+    private void styleTable(javax.swing.JTable table) {
+    // 1. Styling Baris dan Grid (Tampilan Clean/Flat)
+    table.setRowHeight(35); // Bikin baris lebih tinggi agar tidak sempit
+    table.setShowVerticalLines(false); // Hilangkan garis vertikal
+    table.setShowHorizontalLines(true); // Biarkan garis horizontal sebagai pemisah
+    table.setGridColor(new java.awt.Color(230, 230, 230)); // Warna garis horizontal abu-abu tipis
+    table.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+    
+    // 2. Warna saat baris diklik (Hijau Muda)
+    table.setSelectionBackground(new java.awt.Color(204, 255, 204)); 
+    table.setSelectionForeground(new java.awt.Color(0, 0, 0)); // Teks tetap hitam saat dipilih
+
+    // 3. Styling Header (Warna hijau gelap sesuai tema UI-mu)
+    javax.swing.table.JTableHeader header = table.getTableHeader();
+    header.setBackground(new java.awt.Color(21, 100, 60)); // Background hijau
+    header.setForeground(java.awt.Color.BLACK); // Teks putih
+    header.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 13)); // Font modern
+    
+    // Bikin header lebih tinggi sedikit
+    header.setPreferredSize(new java.awt.Dimension(header.getWidth(), 35));
+    
+    // Rata tengah untuk teks header
+    ((javax.swing.table.DefaultTableCellRenderer)header.getDefaultRenderer())
+            .setHorizontalAlignment(javax.swing.JLabel.CENTER);
+            
+    // Opsional: Membuat isi sel tabel rata tengah
+    javax.swing.table.DefaultTableCellRenderer centerRenderer = new javax.swing.table.DefaultTableCellRenderer();
+    centerRenderer.setHorizontalAlignment( javax.swing.JLabel.CENTER );
+    for(int x=0; x < table.getColumnCount(); x++){
+         table.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
+    }
     }
     
     private void showAllCustomers() {
@@ -106,6 +141,7 @@ public class Customer extends javax.swing.JFrame {
 
         customerTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         customerTitle.setForeground(new java.awt.Color(248, 255, 252));
+        customerTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         customerTitle.setText("Data Customer AdventureRent");
 
         addCustomer.setBackground(new java.awt.Color(206, 185, 146));
@@ -116,6 +152,7 @@ public class Customer extends javax.swing.JFrame {
                 addCustomerMouseClicked(evt);
             }
         });
+        addCustomer.addActionListener(this::addCustomerActionPerformed);
 
         showCustomer.setBackground(new java.awt.Color(206, 185, 146));
         showCustomer.setForeground(new java.awt.Color(0, 0, 0));
@@ -177,22 +214,19 @@ public class Customer extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(showCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(editCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                    .addComponent(deleteCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(showCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(customerTitle)
-                .addGap(153, 153, 153))
+            .addComponent(customerTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(customerTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchButton)
                     .addComponent(searchBarInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,7 +241,7 @@ public class Customer extends javax.swing.JFrame {
                         .addComponent(editCustomer)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteCustomer))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -246,6 +280,7 @@ public class Customer extends javax.swing.JFrame {
             public boolean isCellEditable(int row, int col) { return false; }
         };
         customerList.setModel(data);
+        styleTable(customerList);
 
         String searchQuery = "SELECT * FROM customers WHERE " + "CAST(id_customer AS CHAR) LIKE '%" + keyword + "%' OR " + "nama_lengkap LIKE '%" + keyword + "%' OR " + "no_hp LIKE '%" + keyword + "%' OR " + "alamat LIKE '%" + keyword + "%'";
         try {
@@ -269,6 +304,10 @@ public class Customer extends javax.swing.JFrame {
             System.out.println("Error: " + e.getMessage());
         }
     }//GEN-LAST:event_searchButtonMouseClicked
+
+    private void addCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addCustomerActionPerformed
 
     /**
      * @param args the command line arguments
