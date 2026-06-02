@@ -5,6 +5,7 @@
 package mainMenu;
 
 import modules.rental.views.pnlListRental;
+import modules.customer.pnlCustomer;
 
 /**
  *
@@ -19,6 +20,7 @@ public class mainMenu extends javax.swing.JFrame {
      */
     public mainMenu() {
         initComponents();
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -38,11 +40,11 @@ public class mainMenu extends javax.swing.JFrame {
         toCustomer = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
+        toItem = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
+        toRental = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
+        toPengembalian = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         mainContainer = new javax.swing.JPanel();
 
@@ -80,25 +82,25 @@ public class mainMenu extends javax.swing.JFrame {
         jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel35.setText("AB");
 
-        jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel36.setText("Item");
+        toItem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        toItem.setText("Item");
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel37.setText("AB");
 
-        jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel38.setText("Rental");
-        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
+        toRental.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        toRental.setText("Rental");
+        toRental.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel38MouseClicked(evt);
+                toRentalMouseClicked(evt);
             }
         });
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel39.setText("AB");
 
-        jLabel40.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel40.setText("Pengembalian");
+        toPengembalian.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        toPengembalian.setText("Pengembalian");
 
         jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel41.setText("Services");
@@ -108,16 +110,16 @@ public class mainMenu extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(30, 30, 30)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel37)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(toRental, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel35)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(toItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -125,7 +127,7 @@ public class mainMenu extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel39)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(toPengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel32)
                     .addComponent(jLabel41))
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -141,17 +143,17 @@ public class mainMenu extends javax.swing.JFrame {
                     .addComponent(jLabel34))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
+                    .addComponent(toItem)
                     .addComponent(jLabel35))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel41)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel38)
+                    .addComponent(toRental)
                     .addComponent(jLabel37))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel40)
+                    .addComponent(toPengembalian)
                     .addComponent(jLabel39))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -180,7 +182,7 @@ public class mainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addComponent(mainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jPanel1Layout.setVerticalGroup(
@@ -208,24 +210,24 @@ public class mainMenu extends javax.swing.JFrame {
     private void toCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toCustomerMouseClicked
         mainContainer.removeAll(); // Bersihkan kontainer
     
-    // Panggil nama class JPanel-mu (misal: PanelRental)
-    pnlCustomer pnlCust = new pnlCustomer(); 
-    
-    mainContainer.add(pnlCust, java.awt.BorderLayout.CENTER); // Masukkan panel
-    mainContainer.revalidate(); // Render ulang
-    mainContainer.repaint();
+        // Panggil nama class JPanel-mu (misal: PanelRental)
+        pnlCustomer pnlCust = new pnlCustomer(); 
+
+        mainContainer.add(pnlCust, java.awt.BorderLayout.CENTER); // Masukkan panel
+        mainContainer.revalidate(); // Render ulang
+        mainContainer.repaint();
     }//GEN-LAST:event_toCustomerMouseClicked
 
-    private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
-        mainContainer.removeAll(); // Bersihkan kontainer
+    private void toRentalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toRentalMouseClicked
+        mainContainer.removeAll();
     
-    // Panggil nama class JPanel-mu (misal: PanelRental)
-    pnlTransaksi pnlTr = new pnlTransaksi(); 
-    
-    mainContainer.add(pnlTr, java.awt.BorderLayout.CENTER); // Masukkan panel
-    mainContainer.revalidate(); // Render ulang
-    mainContainer.repaint();
-    }//GEN-LAST:event_jLabel38MouseClicked
+      
+        pnlListRental pnlTr = new pnlListRental(); 
+
+        mainContainer.add(pnlTr, java.awt.BorderLayout.CENTER);
+        mainContainer.revalidate();
+        mainContainer.repaint();
+    }//GEN-LAST:event_toRentalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -253,56 +255,20 @@ public class mainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel mainContainer;
     private javax.swing.JLabel toCustomer;
+    private javax.swing.JLabel toItem;
+    private javax.swing.JLabel toPengembalian;
+    private javax.swing.JLabel toRental;
     // End of variables declaration//GEN-END:variables
 }
