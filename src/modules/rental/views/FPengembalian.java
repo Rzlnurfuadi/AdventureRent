@@ -4,13 +4,9 @@
  */
 package modules.rental.views;
 
-import java.awt.Color;
-import java.util.List;
-import modules.rental.models.RentalDetail;
-import modules.rental.services.RentalService;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -20,17 +16,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ASUS
  */
-public class FRental extends javax.swing.JFrame {
+public class FPengembalian extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FRental.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FPengembalian.class.getName());
 
     /**
-     * Creates new form FRental
+     * Creates new form FPengembalian
      */
-    public FRental() {
+    public FPengembalian() {
         initComponents();
-        tampilDataRental();
-
+        tampilDataDipinjam();
     }
 
     /**
@@ -42,31 +37,21 @@ public class FRental extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel1 = new java.awt.Panel();
-        textArea1 = new java.awt.TextArea();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        toRental = new javax.swing.JButton();
-        toTambahRental = new javax.swing.JButton();
-        toPengembalian = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         tableContainer = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        scrRental = new javax.swing.JScrollPane();
-        tblRental = new javax.swing.JTable();
-
-        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
-        panel1.setLayout(panel1Layout);
-        panel1Layout.setHorizontalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        panel1Layout.setVerticalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        scrHapusRental = new javax.swing.JScrollPane();
+        tblHapusRental = new javax.swing.JTable();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        btnHapusRental = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,16 +79,14 @@ public class FRental extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        toRental.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        toRental.setText("List Rental");
-        toRental.addActionListener(this::toRentalActionPerformed);
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setText("List Rental");
 
-        toTambahRental.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        toTambahRental.setText("Tambah Rental");
-        toTambahRental.addActionListener(this::toTambahRentalActionPerformed);
+        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton6.setText("Tambah Rental");
 
-        toPengembalian.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        toPengembalian.setText("Pengembalian");
+        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton7.setText("Pengembalian");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -111,11 +94,11 @@ public class FRental extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(toRental)
+                .addComponent(jButton2)
                 .addGap(18, 18, 18)
-                .addComponent(toTambahRental)
+                .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(toPengembalian)
+                .addComponent(jButton7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -123,9 +106,9 @@ public class FRental extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(toRental)
-                    .addComponent(toTambahRental)
-                    .addComponent(toPengembalian))
+                    .addComponent(jButton2)
+                    .addComponent(jButton6)
+                    .addComponent(jButton7))
                 .addGap(14, 14, 14))
         );
 
@@ -134,10 +117,9 @@ public class FRental extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(0, 153, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 0));
-        jLabel2.setText("List Rental Barang");
+        jLabel2.setText("Pengembalian Barang");
 
-        tblRental.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tblRental.setModel(new javax.swing.table.DefaultTableModel(
+        tblHapusRental.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -153,30 +135,65 @@ public class FRental extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblRental.addMouseListener(new java.awt.event.MouseAdapter() {
+        scrHapusRental.setViewportView(tblHapusRental);
+
+        jLabel3.setBackground(new java.awt.Color(0, 153, 0));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setText("Pengembalian dilakukan dillakukan Pengecekan dan Stok akan terupdate otomatis!");
+
+        btnHapusRental.setBackground(new java.awt.Color(0, 153, 51));
+        btnHapusRental.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnHapusRental.setForeground(new java.awt.Color(255, 255, 255));
+        btnHapusRental.setText("Kembalikan Barang ke Stok");
+        btnHapusRental.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblRentalMouseClicked(evt);
+                btnHapusRentalMouseClicked(evt);
             }
         });
-        scrRental.setViewportView(tblRental);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnHapusRental, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnHapusRental, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout tableContainerLayout = new javax.swing.GroupLayout(tableContainer);
         tableContainer.setLayout(tableContainerLayout);
         tableContainerLayout.setHorizontalGroup(
             tableContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scrHapusRental, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
             .addGroup(tableContainerLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(scrRental, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         tableContainerLayout.setVerticalGroup(
             tableContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tableContainerLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrHapusRental, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrRental, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -222,9 +239,78 @@ public class FRental extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnHapusRentalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHapusRentalMouseClicked
+        int row = tblHapusRental.getSelectedRow();
+    
+    // Validasi apakah ada baris yang dipilih
+    if (row == -1) {
+        JOptionPane.showMessageDialog(this, "Pilih data rental yang ingin dikembalikan terlebih dahulu!");
+        return;
+    }
+
+    String idRentalStr = tblHapusRental.getValueAt(row, 0).toString();
+    String namaCustomer = tblHapusRental.getValueAt(row, 1).toString();
+    int idRental = Integer.parseInt(idRentalStr);
+
+    // Memunculkan OptionPane Konfirmasi
+    int pilihan = JOptionPane.showConfirmDialog(this, 
+            "Apakah Anda yakin ingin menyelesaikan transaksi rental ID: " + idRental + " atas nama " + namaCustomer + "?\nStok barang akan dikembalikan otomatis.", 
+            "Konfirmasi Pengembalian", 
+            JOptionPane.YES_NO_OPTION, 
+            JOptionPane.QUESTION_MESSAGE);
+            
+    if (pilihan == JOptionPane.YES_OPTION) {
+        try {
+            Connection conn = getKoneksi();
+            conn.setAutoCommit(false); // Mulai Transaksi Database
+
+            // 1. Update status_rental menjadi 'Selesai' di tabel rentals
+            String sqlUpdateStatus = "UPDATE rentals SET status_rental = 'Selesai' WHERE id_rental = ?";
+            PreparedStatement pstStatus = conn.prepareStatement(sqlUpdateStatus);
+            pstStatus.setInt(1, idRental);
+            pstStatus.executeUpdate();
+
+            // 2. Ambil data barang apa saja yang dipinjam pada transaksi ini dari rental_details
+            String sqlSelectDetail = "SELECT id_barang, jumlah_pinjam FROM rental_details WHERE id_rental = ?";
+            PreparedStatement pstSelectDetail = conn.prepareStatement(sqlSelectDetail);
+            pstSelectDetail.setInt(1, idRental);
+            ResultSet rsDetail = pstSelectDetail.executeQuery();
+
+            // 3. Looping untuk mengembalikan stok ke tabel items
+            String sqlUpdateStok = "UPDATE items SET stok = stok + ? WHERE id_barang = ?";
+            PreparedStatement pstStok = conn.prepareStatement(sqlUpdateStok);
+
+            while (rsDetail.next()) {
+                int idBarang = rsDetail.getInt("id_barang");
+                int qtyPinjam = rsDetail.getInt("jumlah_pinjam");
+                
+                // Tambahkan (plus) stok barang sesuai jumlah yang dipinjam
+                pstStok.setInt(1, qtyPinjam);
+                pstStok.setInt(2, idBarang);
+                pstStok.executeUpdate();
+            }
+
+            // 4. Catat riwayat pengembalian ke tabel returns
+            String sqlReturn = "INSERT INTO returns (id_rental, tgl_dikembalikan, kondisi_barang) VALUES (?, CURDATE(), 'Aman (Bersih)')";
+            PreparedStatement pstReturn = conn.prepareStatement(sqlReturn);
+            pstReturn.setInt(1, idRental);
+            pstReturn.executeUpdate();
+
+            // 5. Simpan semua perubahan secara permanen (Commit)
+            conn.commit();
+            JOptionPane.showMessageDialog(this, "Pengembalian barang berhasil!\nStatus menjadi 'Selesai' dan Stok telah ditambahkan kembali.");
+            
+            // Refresh ulang tabel agar data yang sudah selesai menghilang dari list
+            tampilDataDipinjam();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal memproses pengembalian: " + e.getMessage());
+        }
+    }
+    }//GEN-LAST:event_btnHapusRentalMouseClicked
+
     private Connection getKoneksi() {
     try {
-        // Sesuaikan dengan nama database dan port XAMPP/MariaDB kamu
         String url = "jdbc:mysql://localhost:3306/db_rental_camping"; 
         String user = "root";
         String pass = "";
@@ -233,10 +319,8 @@ public class FRental extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Koneksi Database Gagal: " + e.getMessage());
         return null;
     }
-}
-    
-    private void tampilDataRental() {
-    // 1. Definisikan header kolom tabel
+}   
+    private void tampilDataDipinjam() {
     DefaultTableModel model = new DefaultTableModel();
     model.addColumn("ID Transaksi");
     model.addColumn("Nama Customer");
@@ -244,22 +328,21 @@ public class FRental extends javax.swing.JFrame {
     model.addColumn("Grand Total");
     model.addColumn("Status");
     
-    // Set model ke komponen tblRental yang sudah dibuat di Netbeans
-    tblRental.setModel(model);
+    tblHapusRental.setModel(model);
     
     try {
         Connection conn = getKoneksi();
         Statement stmt = conn.createStatement();
         
-        // 2. Query JOIN untuk mendapatkan nama lengkap dari tabel customers
+        // Query JOIN hanya untuk status_rental = 'Dipinjam'
         String sql = "SELECT r.id_rental, c.nama_lengkap, r.tgl_pinjam, r.total_harga, r.status_rental " +
                      "FROM rentals r " +
                      "JOIN customers c ON r.id_customer = c.id_customer " +
-                     "ORDER BY r.id_rental DESC";
+                     "WHERE r.status_rental = 'Dipinjam' " +
+                     "ORDER BY r.id_rental ASC";
                      
         ResultSet rs = stmt.executeQuery(sql);
         
-        // 3. Looping data dari database ke dalam row tabel
         while (rs.next()) {
             model.addRow(new Object[]{
                 rs.getString("id_rental"),
@@ -270,27 +353,9 @@ public class FRental extends javax.swing.JFrame {
             });
         }
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Gagal memuat data rental: " + e.getMessage());
+        JOptionPane.showMessageDialog(this, "Gagal memuat data: " + e.getMessage());
     }
 }
-    
-    
-    private void toRentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toRentalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_toRentalActionPerformed
-
-    private void tblRentalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRentalMouseClicked
-        
-
-       
-
-        
-    }//GEN-LAST:event_tblRentalMouseClicked
-
-    private void toTambahRentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toTambahRentalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_toTambahRentalActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -313,23 +378,24 @@ public class FRental extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FRental().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FPengembalian().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHapusRental;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private java.awt.Panel panel1;
-    private javax.swing.JScrollPane scrRental;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane scrHapusRental;
     private javax.swing.JPanel tableContainer;
-    private javax.swing.JTable tblRental;
-    private java.awt.TextArea textArea1;
-    private javax.swing.JButton toPengembalian;
-    private javax.swing.JButton toRental;
-    private javax.swing.JButton toTambahRental;
+    private javax.swing.JTable tblHapusRental;
     // End of variables declaration//GEN-END:variables
 }
