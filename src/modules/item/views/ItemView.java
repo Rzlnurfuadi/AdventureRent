@@ -29,6 +29,39 @@ public class ItemView extends javax.swing.JFrame {
         
     }
 
+    private void styleTable(javax.swing.JTable table) {
+    // 1. Styling Baris dan Grid (Tampilan Clean/Flat)
+    table.setRowHeight(35); // Bikin baris lebih tinggi agar tidak sempit
+    table.setShowVerticalLines(false); // Hilangkan garis vertikal
+    table.setShowHorizontalLines(true); // Biarkan garis horizontal sebagai pemisah
+    table.setGridColor(new java.awt.Color(230, 230, 230)); // Warna garis horizontal abu-abu tipis
+    table.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+    
+    // 2. Warna saat baris diklik (Hijau Muda)
+    table.setSelectionBackground(new java.awt.Color(204, 255, 204)); 
+    table.setSelectionForeground(new java.awt.Color(0, 0, 0)); // Teks tetap hitam saat dipilih
+
+    // 3. Styling Header (Warna hijau gelap sesuai tema UI-mu)
+    javax.swing.table.JTableHeader header = table.getTableHeader();
+    header.setBackground(new java.awt.Color(21, 100, 60)); // Background hijau
+    header.setForeground(java.awt.Color.BLACK); // Teks putih
+    header.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 13)); // Font modern
+    
+    // Bikin header lebih tinggi sedikit
+    header.setPreferredSize(new java.awt.Dimension(header.getWidth(), 35));
+    
+    // Rata tengah untuk teks header
+    ((javax.swing.table.DefaultTableCellRenderer)header.getDefaultRenderer())
+            .setHorizontalAlignment(javax.swing.JLabel.CENTER);
+            
+    // Opsional: Membuat isi sel tabel rata tengah
+    javax.swing.table.DefaultTableCellRenderer centerRenderer = new javax.swing.table.DefaultTableCellRenderer();
+    centerRenderer.setHorizontalAlignment( javax.swing.JLabel.CENTER );
+    for(int x=0; x < table.getColumnCount(); x++){
+         table.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
+    }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,6 +134,7 @@ public class ItemView extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(248, 255, 252));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Barang Barang Camping");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -119,10 +153,7 @@ public class ItemView extends javax.swing.JFrame {
                         .addComponent(btnHapus)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(209, 209, 209)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,13 +183,13 @@ public class ItemView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+  
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
         // Memanggil Constructor 1 (Form Kosong)
@@ -249,6 +280,7 @@ public class ItemView extends javax.swing.JFrame {
     }
     
     public void loadDataToTable() {
+        styleTable (tblBarang);
         DefaultTableModel model = (DefaultTableModel) tblBarang.getModel();
         
         // ---> BARIS TAMBAHAN: Memaksa tabel membuat 5 kolom <---
