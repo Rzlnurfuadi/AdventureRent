@@ -25,6 +25,7 @@ public class mainMenu extends javax.swing.JFrame {
         initComponents();
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         setTitle("AdventureRent - Sistem Rental Camping");
+        toCustomer.setForeground(new java.awt.Color(255,245,205));
         showPanel(new pnlCustomer());
     }
 
@@ -33,6 +34,15 @@ public class mainMenu extends javax.swing.JFrame {
         mainContainer.add(panel, java.awt.BorderLayout.CENTER);
         mainContainer.revalidate();
         mainContainer.repaint();
+    }
+    
+    private void resetMenuColor() {
+        java.awt.Color normal = new java.awt.Color(248, 255, 252);
+
+        toCustomer.setForeground(normal);
+        toItem.setForeground(normal);
+        toRental.setForeground(normal);
+        toPengembalian.setForeground(normal);
     }
 
     /**
@@ -50,14 +60,15 @@ public class mainMenu extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         toCustomer = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
+        custIconFrame = new javax.swing.JLabel();
+        itemIconFrame = new javax.swing.JLabel();
         toItem = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
+        rentIconFrame = new javax.swing.JLabel();
         toRental = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
+        returnIconFrame = new javax.swing.JLabel();
         toPengembalian = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         mainContainer = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -78,9 +89,11 @@ public class mainMenu extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(115, 147, 126));
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(248, 255, 252));
         jLabel32.setText("Master Data");
 
-        toCustomer.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        toCustomer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        toCustomer.setForeground(new java.awt.Color(248, 255, 252));
         toCustomer.setText("Customer");
         toCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,13 +101,25 @@ public class mainMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel34.setText("AB");
+        custIconFrame.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        custIconFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/cust.png"))); // NOI18N
+        custIconFrame.setText("AB");
+        custIconFrame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                custIconFrameMouseClicked(evt);
+            }
+        });
 
-        jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel35.setText("AB");
+        itemIconFrame.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        itemIconFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item.png"))); // NOI18N
+        itemIconFrame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemIconFrameMouseClicked(evt);
+            }
+        });
 
-        toItem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        toItem.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        toItem.setForeground(new java.awt.Color(248, 255, 252));
         toItem.setText("Item");
         toItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -102,10 +127,16 @@ public class mainMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel37.setText("AB");
+        rentIconFrame.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        rentIconFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/rent.png"))); // NOI18N
+        rentIconFrame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rentIconFrameMouseClicked(evt);
+            }
+        });
 
-        toRental.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        toRental.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        toRental.setForeground(new java.awt.Color(248, 255, 252));
         toRental.setText("Rental");
         toRental.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -113,10 +144,16 @@ public class mainMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel39.setText("AB");
+        returnIconFrame.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        returnIconFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/return.png"))); // NOI18N
+        returnIconFrame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                returnIconFrameMouseClicked(evt);
+            }
+        });
 
-        toPengembalian.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        toPengembalian.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        toPengembalian.setForeground(new java.awt.Color(248, 255, 252));
         toPengembalian.setText("Pengembalian");
         toPengembalian.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -125,6 +162,7 @@ public class mainMenu extends javax.swing.JFrame {
         });
 
         jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(248, 255, 252));
         jLabel41.setText("Services");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -133,26 +171,26 @@ public class mainMenu extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel37)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(toRental, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(toItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(toCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel39)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(toPengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel32)
-                    .addComponent(jLabel41))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(jLabel41)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(itemIconFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(custIconFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(toCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(toItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(returnIconFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rentIconFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(toRental, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(toPengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(23, 23, 23))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,38 +198,46 @@ public class mainMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel32)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(toCustomer)
-                    .addComponent(jLabel34))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(custIconFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(toCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(toItem)
-                    .addComponent(jLabel35))
+                    .addComponent(toItem, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(itemIconFrame))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel41)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(toRental)
-                    .addComponent(jLabel37))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rentIconFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(toRental, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(toPengembalian)
-                    .addComponent(jLabel39))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(returnIconFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(toPengembalian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/adventurerentlogo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(300, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
 
         mainContainer.setBackground(new java.awt.Color(248, 255, 252));
@@ -204,7 +250,7 @@ public class mainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                .addComponent(mainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jPanel1Layout.setVerticalGroup(
@@ -230,20 +276,44 @@ public class mainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void toCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toCustomerMouseClicked
+        resetMenuColor();
+        toCustomer.setForeground(new java.awt.Color(255,245,205));
         showPanel(new pnlCustomer());
     }//GEN-LAST:event_toCustomerMouseClicked
 
-    private void toItemMouseClicked(java.awt.event.MouseEvent evt) {
-        showPanel(new pnlItem());
-    }
-
     private void toRentalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toRentalMouseClicked
+        resetMenuColor();
+        toRental.setForeground(new java.awt.Color(255,245,205));
         showPanel(new pnlTransaksi());
     }//GEN-LAST:event_toRentalMouseClicked
 
-    private void toPengembalianMouseClicked(java.awt.event.MouseEvent evt) {
+    private void toItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toItemMouseClicked
+        resetMenuColor();
+        toItem.setForeground(new java.awt.Color(255,245,205));
+        showPanel(new pnlItem());
+    }//GEN-LAST:event_toItemMouseClicked
+
+    private void toPengembalianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toPengembalianMouseClicked
+        resetMenuColor();
+        toPengembalian.setForeground(new java.awt.Color(255,245,205));
         showPanel(new pnlPengembalian());
-    }
+    }//GEN-LAST:event_toPengembalianMouseClicked
+
+    private void custIconFrameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_custIconFrameMouseClicked
+        showPanel(new pnlCustomer());
+    }//GEN-LAST:event_custIconFrameMouseClicked
+
+    private void itemIconFrameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemIconFrameMouseClicked
+        showPanel(new pnlItem());
+    }//GEN-LAST:event_itemIconFrameMouseClicked
+
+    private void rentIconFrameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rentIconFrameMouseClicked
+        showPanel(new pnlTransaksi());
+    }//GEN-LAST:event_rentIconFrameMouseClicked
+
+    private void returnIconFrameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnIconFrameMouseClicked
+        showPanel(new pnlPengembalian());
+    }//GEN-LAST:event_returnIconFrameMouseClicked
 
     /**
      * @param args the command line arguments
@@ -271,17 +341,18 @@ public class mainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel custIconFrame;
+    private javax.swing.JLabel itemIconFrame;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel mainContainer;
+    private javax.swing.JLabel rentIconFrame;
+    private javax.swing.JLabel returnIconFrame;
     private javax.swing.JLabel toCustomer;
     private javax.swing.JLabel toItem;
     private javax.swing.JLabel toPengembalian;

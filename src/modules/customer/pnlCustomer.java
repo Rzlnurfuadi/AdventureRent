@@ -120,14 +120,15 @@ public class pnlCustomer extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(115, 147, 126));
 
-        searchLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        searchLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         searchLabel.setForeground(new java.awt.Color(248, 255, 252));
         searchLabel.setText("Cari customer");
 
         customerTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         customerTitle.setForeground(new java.awt.Color(248, 255, 252));
-        customerTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        customerTitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         customerTitle.setText("Data Customer AdventureRent");
+        customerTitle.setToolTipText("");
 
         searchBarInput.setBackground(new java.awt.Color(248, 255, 252));
 
@@ -195,7 +196,7 @@ public class pnlCustomer extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGap(0, 658, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -203,13 +204,12 @@ public class pnlCustomer extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(12, 12, 12)
-                                    .addComponent(searchLabel)
+                                    .addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(searchBarInput, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(searchBarInput, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(jScrollPane1))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(showCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)

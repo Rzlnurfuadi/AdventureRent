@@ -3,21 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/item/models/Carrier.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/item/services/ItemService.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/item/models/Item.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/item/models/Tent.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/item/models/Lamp.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/config/DatabaseConfig.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/item/dao/ItemDAO.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/item/dao/ItemDAOImpl.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/rental/views/pnlTambahRental.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/item/views/ItemView.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/item/views/FormItemView.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/rental/views/pnlTransaksi.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/rental/views/pnlPengembalian.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/item/views/pnlItem.java</file>
-            <file>file:/C:/KULIAH/Smester%204/PBO/UAS/AdventureRent/src/modules/item/views/ItemTableRefreshable.java</file>
+            <file>file:/C:/Users/x395/OneDrive/Desktop/UASOOP/AdventureRent/src/mainMenu/mainMenu.java</file>
+            <file>file:/C:/Users/x395/OneDrive/Desktop/UASOOP/AdventureRent/src/modules/customer/Customer.java</file>
         </group>
     </open-files>
 </project-private>
