@@ -16,6 +16,9 @@ public class pnlTransaksi extends javax.swing.JPanel {
     public pnlTransaksi() {
         initComponents();
         toRentalMouseClicked(null);
+        java.awt.Image icon = new javax.swing.ImageIcon(getClass().getResource("/assets/adventurerentlogo.png")).getImage();
+    
+    // 2. Pasang gambar tersebut sebagai icon window JFrame
     }
 
     /**
@@ -35,21 +38,22 @@ public class pnlTransaksi extends javax.swing.JPanel {
         toPengembalian = new javax.swing.JButton();
         tblContainer = new javax.swing.JPanel();
 
-        jPanel3.setBackground(new java.awt.Color(21, 100, 60));
+        jPanel3.setBackground(new java.awt.Color(115, 147, 126));
 
         jLabel1.setBackground(new java.awt.Color(21, 100, 60));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Rental Barang");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -59,7 +63,10 @@ public class pnlTransaksi extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        toRental.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jPanel4.setBackground(new java.awt.Color(115, 147, 126));
+
+        toRental.setBackground(new java.awt.Color(206, 185, 146));
+        toRental.setForeground(new java.awt.Color(51, 51, 51));
         toRental.setText("List Rental");
         toRental.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -68,7 +75,8 @@ public class pnlTransaksi extends javax.swing.JPanel {
         });
         toRental.addActionListener(this::toRentalActionPerformed);
 
-        toTambahRental.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        toTambahRental.setBackground(new java.awt.Color(206, 185, 146));
+        toTambahRental.setForeground(new java.awt.Color(51, 51, 51));
         toTambahRental.setText("Tambah Rental");
         toTambahRental.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -77,7 +85,8 @@ public class pnlTransaksi extends javax.swing.JPanel {
         });
         toTambahRental.addActionListener(this::toTambahRentalActionPerformed);
 
-        toPengembalian.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        toPengembalian.setBackground(new java.awt.Color(206, 185, 146));
+        toPengembalian.setForeground(new java.awt.Color(51, 51, 51));
         toPengembalian.setText("Pengembalian");
         toPengembalian.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,7 +127,7 @@ public class pnlTransaksi extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(tblContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(tblContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +136,7 @@ public class pnlTransaksi extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(tblContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                .addComponent(tblContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

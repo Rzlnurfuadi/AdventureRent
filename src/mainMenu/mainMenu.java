@@ -26,6 +26,8 @@ public class mainMenu extends javax.swing.JFrame {
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         setTitle("AdventureRent - Sistem Rental Camping");
         toCustomer.setForeground(new java.awt.Color(255,245,205));
+        java.awt.Image icon = new javax.swing.ImageIcon(getClass().getResource("/assets/AR.png")).getImage();
+        setIconImage(icon);
         showPanel(new pnlCustomer());
     }
 
@@ -202,7 +204,7 @@ public class mainMenu extends javax.swing.JFrame {
                     .addComponent(custIconFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(toCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(toItem, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(itemIconFrame))
                 .addGap(18, 18, 18)

@@ -114,26 +114,23 @@ public class pnlCustomer extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         customerList = new javax.swing.JTable();
         addCustomer = new javax.swing.JButton();
-        showCustomer = new javax.swing.JButton();
         editCustomer = new javax.swing.JButton();
         deleteCustomer = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(115, 147, 126));
 
-        searchLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        searchLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         searchLabel.setForeground(new java.awt.Color(248, 255, 252));
         searchLabel.setText("Cari customer");
 
         customerTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         customerTitle.setForeground(new java.awt.Color(248, 255, 252));
-        customerTitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        customerTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         customerTitle.setText("Data Customer AdventureRent");
-        customerTitle.setToolTipText("");
 
         searchBarInput.setBackground(new java.awt.Color(248, 255, 252));
 
         searchButton.setBackground(new java.awt.Color(206, 185, 146));
-        searchButton.setForeground(new java.awt.Color(0, 0, 0));
         searchButton.setText("Cari");
         searchButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -153,11 +150,15 @@ public class pnlCustomer extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        customerList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customerListMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(customerList);
 
         addCustomer.setBackground(new java.awt.Color(206, 185, 146));
-        addCustomer.setForeground(new java.awt.Color(0, 0, 0));
-        addCustomer.setText("Tambah Customer");
+        addCustomer.setText("Tambah");
         addCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addCustomerMouseClicked(evt);
@@ -165,18 +166,8 @@ public class pnlCustomer extends javax.swing.JPanel {
         });
         addCustomer.addActionListener(this::addCustomerActionPerformed);
 
-        showCustomer.setBackground(new java.awt.Color(206, 185, 146));
-        showCustomer.setForeground(new java.awt.Color(0, 0, 0));
-        showCustomer.setText("Refresh");
-        showCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                showCustomerMouseClicked(evt);
-            }
-        });
-
         editCustomer.setBackground(new java.awt.Color(206, 185, 146));
-        editCustomer.setForeground(new java.awt.Color(0, 0, 0));
-        editCustomer.setText("Edit Data Customer");
+        editCustomer.setText("Edit");
         editCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editCustomerMouseClicked(evt);
@@ -184,64 +175,58 @@ public class pnlCustomer extends javax.swing.JPanel {
         });
 
         deleteCustomer.setBackground(new java.awt.Color(206, 185, 146));
-        deleteCustomer.setForeground(new java.awt.Color(0, 0, 0));
-        deleteCustomer.setText("Hapus Customer");
+        deleteCustomer.setText("Hapus");
         deleteCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteCustomerMouseClicked(evt);
             }
         });
+        deleteCustomer.addActionListener(this::deleteCustomerActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addComponent(searchLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchBarInput, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(searchBarInput, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(showCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(addCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(editCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(deleteCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(customerTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
+                        .addComponent(customerTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap()))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 456, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchLabel)
+                    .addComponent(addCustomer)
+                    .addComponent(editCustomer)
+                    .addComponent(searchButton)
+                    .addComponent(searchBarInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteCustomer))
+                .addContainerGap(378, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(customerTitle)
-                    .addGap(16, 16, 16)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(searchButton)
-                        .addComponent(searchBarInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(searchLabel))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(addCustomer)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(showCustomer)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(editCustomer)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(deleteCustomer))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE))
+                    .addGap(45, 45, 45)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -260,10 +245,6 @@ public class pnlCustomer extends javax.swing.JPanel {
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
         // TODO add your handling code here:
         String keyword = searchBarInput.getText().trim();
-        if (conn == null) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Koneksi database gagal!");
-            return;
-        }
 
         DefaultTableModel data = new DefaultTableModel(
             new String[]{"ID", "Nama Lengkap", "No HP", "Alamat"}, 0
@@ -297,6 +278,49 @@ public class pnlCustomer extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_searchButtonMouseClicked
 
+    private void customerListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerListMouseClicked
+
+        int baris = customerList.getSelectedRow();
+        System.out.println("Baris yang terpilih: " + baris); // Tambahkan baris ini
+
+        // 2. Pastikan ada baris yang valid diklik (bukan area kosong)
+        if (baris != -1) {
+            try {
+                // 3. Ambil data dari tabel berdasarkan urutan kolom.
+                // PENTING: Sesuaikan angka 0, 1, 2, 3 dengan urutan kolom di desain JTable kamu!
+                // Misalnya: 0 = ID, 1 = Nama, 2 = No HP, 3 = Alamat
+
+                String idString = customerList.getValueAt(baris, 0).toString();
+                int idCust = Integer.parseInt(idString); // Konversi ID menjadi integer
+
+                String namaCust = customerList.getValueAt(baris, 1).toString();
+                String noHpCust = customerList.getValueAt(baris, 2).toString();
+                String alamatCust = customerList.getValueAt(baris, 3).toString();
+
+                // 4. Panggil JFrame EditThisCustomer dan lempar datanya ke dalam constructor
+                EditThisCustomer editFrame = new EditThisCustomer(idCust, namaCust, noHpCust, alamatCust);
+
+                // 5. Tampilkan jendela edit
+                editFrame.setVisible(true);
+
+                // 6. (Fitur Tambahan) Refresh tabel otomatis saat jendela edit ditutup
+                editFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                        // Panggil method untuk memuat ulang isi tabel dari database
+                        // Contoh jika nama methodmu loadData() atau tampilkanData()
+                        // loadData();
+                    }
+                });
+
+            } catch (NumberFormatException e) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Format ID tidak valid: " + e.getMessage());
+            } catch (Exception e) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat mengambil data: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_customerListMouseClicked
+
     private void addCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addCustomerMouseClicked
         // TODO add your handling code here:
         new AddDataCustomer().setVisible(true);
@@ -306,20 +330,18 @@ public class pnlCustomer extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_addCustomerActionPerformed
 
-    private void showCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showCustomerMouseClicked
-        // TODO add your handling code here:
-        showAllCustomers();
-    }//GEN-LAST:event_showCustomerMouseClicked
-
     private void editCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editCustomerMouseClicked
-        // TODO add your handling code here:
-        new EditDataCustomer().setVisible(true);
+        System.out.println("BABBABBA");
     }//GEN-LAST:event_editCustomerMouseClicked
 
     private void deleteCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteCustomerMouseClicked
         // TODO add your handling code here:
         new DeleteDataCustomer().setVisible(true);
     }//GEN-LAST:event_deleteCustomerMouseClicked
+
+    private void deleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCustomerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteCustomerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -333,6 +355,5 @@ public class pnlCustomer extends javax.swing.JPanel {
     private javax.swing.JTextField searchBarInput;
     private javax.swing.JButton searchButton;
     private javax.swing.JLabel searchLabel;
-    private javax.swing.JButton showCustomer;
     // End of variables declaration//GEN-END:variables
 }

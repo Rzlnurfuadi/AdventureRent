@@ -121,6 +121,7 @@ public class pnlListRental extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         scrRental = new javax.swing.JScrollPane();
         tblRental = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         tableContainer.setBackground(new java.awt.Color(248, 255, 252));
 
@@ -152,6 +153,9 @@ public class pnlListRental extends javax.swing.JPanel {
         });
         scrRental.setViewportView(tblRental);
 
+        jButton1.setText("Cetak Excel");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
         javax.swing.GroupLayout tableContainerLayout = new javax.swing.GroupLayout(tableContainer);
         tableContainer.setLayout(tableContainerLayout);
         tableContainerLayout.setHorizontalGroup(
@@ -159,16 +163,23 @@ public class pnlListRental extends javax.swing.JPanel {
             .addGroup(tableContainerLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
             .addComponent(scrRental, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
         );
         tableContainerLayout.setVerticalGroup(
             tableContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tableContainerLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrRental, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE))
+                .addGroup(tableContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tableContainerLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tableContainerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrRental, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -209,8 +220,49 @@ public class pnlListRental extends javax.swing.JPanel {
 
     }//GEN-LAST:event_tblRentalMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // 1. Membuka jendela dialog agar user bisa milih lokasi save file
+    javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+    fileChooser.setDialogTitle("Simpan Laporan Excel");
+    
+    // Set default nama file (misal: Laporan_Bulanan.xlsx)
+    fileChooser.setSelectedFile(new java.io.File("Laporan_Bulanan.xlsx"));
+
+    int userSelection = fileChooser.showSaveDialog(this);
+
+    // 2. Jika user menekan tombol "Save" di dialog
+    if (userSelection == javax.swing.JFileChooser.APPROVE_OPTION) {
+        java.io.File fileToSave = fileChooser.getSelectedFile();
+        
+        // Pastikan formatnya berakhiran .xlsx
+        String filePath = fileToSave.getAbsolutePath();
+        if(!filePath.toLowerCase().endsWith(".xlsx")) {
+            fileToSave = new java.io.File(filePath + ".xlsx");
+        }
+
+        try {
+            // 3. Panggil class Utility Excel kita
+            // Asumsi tabel kamu bernama 'tableReport' atau 'customerList'
+            utils.ExcelExporter exporter = new utils.ExcelExporter();
+            exporter.exportTable(tblRental, fileToSave); // Ganti tableReport dengan nama JTable-mu
+            
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Berhasil mengekspor data ke Excel!\nLokasi: " + fileToSave.getAbsolutePath(), 
+                "Sukses", 
+                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                
+        } catch (Exception ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Gagal menyimpan file: " + ex.getMessage(), 
+                "Error", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
